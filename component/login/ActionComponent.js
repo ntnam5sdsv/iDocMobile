@@ -1,14 +1,12 @@
-import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, Icon, View } from 'react-native'
 import React from 'react'
-import IconItem from './IconItem';
-import { MaterialIcons} from '@expo/vector-icons';
+import { MaterialCommunityIcons} from '@expo/vector-icons';
 
-export default function ActionComponent({urlIcon, contentLabel}) {
-  console.log(urlIcon);
+export default function ActionComponent({iconName, contentLabel}) {
   return (
-    <TouchableOpacity style= {styles.container} onPress={()=> {console.log("Press  "+ props.contentLabel)}}>
+    <TouchableOpacity style= {styles.container} onPress={()=> {console.log("Press  "+ contentLabel)}}>
       <View style={styles.iconWrapper}>
-        <Image  source={require("./images/icon_add.png")} resizeMode = 'contain' size={10}/>
+      <MaterialCommunityIcons name={iconName}  size={40} color={"#666666"} />
       </View>
       <Text style={styles.text}>{contentLabel}</Text>
     </TouchableOpacity>
@@ -17,7 +15,6 @@ export default function ActionComponent({urlIcon, contentLabel}) {
 
 const styles = StyleSheet.create({
     container:{
-        flex:1,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center'
@@ -28,13 +25,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'black',
         fontSize: 15,
-    }, iconWrapper:{
-        width: 60,
-        height: 60,
-        borderRadius: 60/2,
-        borderWidth: 2,
-        borderColor: '#B7B7B7',
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
+    },
+    iconWrapper:{
+      width: 60,
+      height: 60,
+      borderRadius: 60/2,
+      borderWidth: 2,
+      borderColor: '#666666',
+      justifyContent: 'center',
+      alignItems: 'center'
+  }
 })

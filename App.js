@@ -4,45 +4,20 @@ import LoginScreen from './component/login/LoginScreen';
 import SplashScreen from './component/login/SplashScreen';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StatusBar } from 'expo-status-bar';
 import TabBarScreen from './component/login/TabBarScreen';
 
 
 const Stack = createNativeStackNavigator();
 export default function App (){
-  function HomeScreen({navigation}) {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <Text>Home Screen</Text>
-          <Button title='Go to Details' onPress={() => navigation.navigate('Details') }/> 
-        </View>
-
-    );
-  }
-
-  function DetailsScreen() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
-      </View>
-    );
-  }
-
   return (
-    // <SafeAreaView style={styles.container}>
-    //   <SplashScreen/>
-    //   {/* <LoginScreen /> */}
-    // </SafeAreaView>
-
-    // <NavigationContainer>    
-    //   <Stack.Navigator initialRouteName='Home'>
-    //     <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Overview' }}/>
-    //     <Stack.Screen name="Details" component={DetailsScreen} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
-
     <SafeAreaView style={styles.container}>
-      <TabBarScreen/>
+        <NavigationContainer independent={true}>
+        <Stack.Navigator>
+          {/*Define our routes*/}
+          <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Dashboard" component={TabBarScreen}  options={{ headerShown: false }}/>
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaView>
   );
 }

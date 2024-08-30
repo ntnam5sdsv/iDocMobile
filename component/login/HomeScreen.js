@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, ImageBackground, Image, Touchable, TouchableOpacity } from 'react-native'
 import React, { useState }from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Circle, } from 'react-native-shape';
 import IconItem from './IconItem';
 import ActionComponent from './ActionComponent';
 
@@ -11,7 +10,9 @@ export default function HomeScreen() {
     <SafeAreaView style={styles.container}>
         <View style={styles.topContainer}>
             <ImageBackground style={styles.background} source={require('./images/background_top.jpg')} resizeMode="cover">
-                <Circle color={'#fffcf7'} scale={1.2} rotate={45}/>
+                <View style={styles.iconWrapper}>
+                    <Image  source={require("./images/avt.png")} resizeMode = 'contain' />
+                </View>
                 <Text style={styles.textName}>{name}</Text>
                 <TouchableOpacity  onPress={()=> {console.log("Press!!")}}>
                     <IconItem name={"search"} size={50} color={"#666666"}/>
@@ -23,19 +24,19 @@ export default function HomeScreen() {
             <View style={styles.contentItem}>
                 <Text style={styles.sectionTitle}>Văn bản đến</Text>
                 <View style={styles.arrangeItem}>
-                    <ActionComponent urlIcon={"./images/icon_add.png"} contentLabel={"Xử lý chính"}/>
-                    <ActionComponent urlIcon={"./images/icon_add.png"} contentLabel={"Phối hợp"}/>
-                    <ActionComponent urlIcon={"./images/icon_add.png"} contentLabel={"Tra cứu tìm kiếm"}/>
-                    <ActionComponent urlIcon={"./images/icon_add.png"} contentLabel={"Thêm"}/>
+                    <ActionComponent iconName={"bank"} contentLabel={"Xử lý chính"}/>
+                    <ActionComponent iconName={"account-group"} contentLabel={"Phối hợp"}/>
+                    <ActionComponent iconName={"magnify"} contentLabel={"Tra cứu tìm kiếm"}/>
+                    <ActionComponent iconName={"plus"} contentLabel={"Thêm"}/>
                 </View>
             </View>
             <View style={styles.contentItem}>
                 <Text style={styles.sectionTitle}>Văn bản đi</Text>
                 <View style={styles.arrangeItem}>
-                    <ActionComponent urlIcon={"./images/icon_add.png"} contentLabel={"Xử lý chính"}/>
-                    <ActionComponent urlIcon={"./images/icon_add.png"} contentLabel={"Phối hợp"}/>
-                    <ActionComponent urlIcon={"./images/icon_add.png"} contentLabel={"Tra cứu tìm kiếm"}/>
-                    <ActionComponent urlIcon={"./images/icon_add.png"} contentLabel={"Thêm"}/>
+                    <ActionComponent iconName={"bank"} contentLabel={"Xử lý chính"}/>
+                    <ActionComponent iconName={"account-group"} contentLabel={"Phối hợp"}/>
+                    <ActionComponent iconName={"magnify"} contentLabel={"Tra cứu tìm kiếm"}/>
+                    <ActionComponent iconName={"plus"} contentLabel={"Thêm"}/>
                 </View>
             </View>
 
@@ -63,12 +64,13 @@ const styles = StyleSheet.create({
     },
     contentItem:{
         flex: 1,
-        marginTop: '3%'
+        marginTop: 10
     },
     arrangeItem:{
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         alignItems: 'baseline',
+        marginTop: 20
     },
     slideBanner:{
         flex: 1.5,
@@ -93,8 +95,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         textTransform: 'none',
-        marginBottom: '3%',
         marginHorizontal: '2%'
+    },
+    iconWrapper:{
+        width: 60,
+        height: 60,
+        borderRadius: 60/2,
+        borderWidth: 2,
+        borderColor: '#666666',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 
 })

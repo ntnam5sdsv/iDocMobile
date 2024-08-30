@@ -2,7 +2,7 @@ import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, ImageBackgr
 import React, { useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function LoginScreen(
+export default function LoginScreen({navigation}
   
 ) {
   const [username, setUsername]= useState('');
@@ -17,6 +17,7 @@ export default function LoginScreen(
     //send request
     console.log("Username: " + username);
     console.log("Password: " + password);
+    navigation.navigate("Dashboard");
   }
   return (
     <SafeAreaView style={styles.container}>

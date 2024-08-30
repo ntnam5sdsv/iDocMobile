@@ -14,7 +14,7 @@ export default function TabBarScreen() {
 
   return (
     <SafeAreaProvider>
-        <NavigationContainer>
+        <NavigationContainer independent={true}>
             <Tab.Navigator screenOptions={{ headerShown: false }}>
             <Tab.Screen name="Home" component={HomeScreen}  
                 options={{
