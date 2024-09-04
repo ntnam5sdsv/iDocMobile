@@ -1,6 +1,7 @@
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, ImageBackground, SafeAreaView } from 'react-native';
-import React, { useState } from 'react';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, ImageBackground, SafeAreaView, ActivityIndicator } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Loading from '../common/Loading';
 
 export default function LoginScreen({navigation}
   
@@ -9,22 +10,33 @@ export default function LoginScreen({navigation}
   const [password, setPassword]= useState('');
   const [showPassword, setShowPassword]= useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+
   function toggleShowPassword(){
     setShowPassword(!showPassword);
   }
 
   function loginHandler(){
+    setIsLoading(true);
     //send request
     console.log("Username: " + username);
     console.log("Password: " + password);
-    navigation.navigate("Dashboard");
-  }
-  return (
-    <SafeAreaView style={styles.container}>
 
+    setTimeout(()=> {setIsLoading(false); setIsSuccess(true)},1000);
+    console.log(isSuccess);
+    if(isSuccess){
+      navigation.navigate("Dashboard");
+    }
+  }
+
+  return (
+    <>
+    <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
         <ImageBackground source={require('./images/background_top.jpg')} resizeMode="cover" style={styles.background}>
-          <Image  source={require("./images/logo.png")} resizeMode='contain' style={{marginTop: '10%'}}/>
+          <Image  source={require("./images/logo.png")} resizeMode='contain' style={{marginTop: '20%'}}/>
           <Text style={styles.title}>ban cơ yếu chính phủ</Text>
         </ImageBackground>
       </View>
@@ -55,8 +67,9 @@ export default function LoginScreen({navigation}
           </TouchableOpacity>
         </View>
       </View>
-
     </SafeAreaView>
+     {isLoading &&  <Loading/>}
+     </>
   )
 }
 
@@ -70,11 +83,12 @@ const styles = StyleSheet.create({
     background:{
       justifyContent: 'center',
       alignItems: 'center',
+      marginTop: '5%'
     },
     logoContainer:{
-      flex: 1.5,
+      flex: 2,
       width: '100%',
-      marginBottom: '10%',
+      marginBottom: '20%',
       
     },
     contentContainer:{
@@ -92,10 +106,8 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       fontSize: 25,
       textAlign: 'center',
-      marginTop: '10%',
-      // shadowOpacity: 0.2,
-      // shadowColor:'yellow',
-      textTransform:'uppercase'
+      textTransform:'uppercase',
+      marginTop: '5%',
     },
     inputArea:{
         height: 60, 

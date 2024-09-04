@@ -11,13 +11,12 @@ export default function HomeScreen() {
         <View style={styles.topContainer}>
             <ImageBackground style={styles.background} source={require('./images/background_top.jpg')} resizeMode="cover">
                 <View style={styles.iconWrapper}>
-                    <Image  source={require("./images/avt.png")} resizeMode = 'contain' />
+                    <Image  source={require("./images/avt.png")} resizeMode = 'contain' style={{width: '100%', height:'100%', borderRadius: 70/2}} />
                 </View>
                 <Text style={styles.textName}>{name}</Text>
                 <TouchableOpacity  onPress={()=> {console.log("Press!!")}}>
-                    <IconItem name={"search"} size={50} color={"#666666"}/>
+                    <IconItem name={"search"} size={45} color={"#666666"}/>
                 </TouchableOpacity>
-               
             </ImageBackground>
         </View>
         <View style={styles.contentContainer}>
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
         justifyContent:'space-around',
     },
     contentItem:{
-        flex: 1,
+        flex: 2,
         marginTop: 10
     },
     arrangeItem:{
@@ -75,7 +74,12 @@ const styles = StyleSheet.create({
     slideBanner:{
         flex: 1.5,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: '#effcff',
+        borderRadius: 30,
+        marginHorizontal: '10%',
+        marginTop: '10%',
+        marginBottom: '10%'
     },
     background:{
         height: '100%',
@@ -98,11 +102,11 @@ const styles = StyleSheet.create({
         marginHorizontal: '2%'
     },
     iconWrapper:{
-        width: 60,
-        height: 60,
-        borderRadius: 60/2,
+        width: 70,
+        height: 70,
+        borderRadius: 70/2,
         borderWidth: 2,
-        borderColor: '#666666',
+        borderColor: 'orange',
         justifyContent: 'center',
         alignItems: 'center'
     }
